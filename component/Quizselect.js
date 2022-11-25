@@ -1,11 +1,15 @@
 
 import * as React from 'react';
 import { View, StyleSheet,Text,TouchableOpacity} from 'react-native';
-
+import { createDrawerNavigator } from "@react-navigation/drawer";
 export default function Quizselect(props) {
+    
     return (
 
         <View style={styles.container}>
+       
+
+          
             <TouchableOpacity 
             style = {styles.buttonstyle}
             onPress={() => props.navigation.navigate("quizopen",{num:3 , text:"Jennifer has 84.5 yards of fabric to make curtains. She makes 6 identical curtains and has 19.7 yards of fabric remaining. How many yards of fabric does Jennifer use per curtain?"})}
@@ -25,6 +29,7 @@ export default function Quizselect(props) {
 
 
         </View>
+      
      
      
     );

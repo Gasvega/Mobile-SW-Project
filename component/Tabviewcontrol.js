@@ -12,6 +12,8 @@ export default function TabViewExample(props) {
   const [steptext2,setsteptext2] = useState("")
   const [steptext3,setsteptext3] = useState("")
   const [steptext4,setsteptext4] = useState("")
+
+  
   
   const [buttonttext1,setbuttontext1] = useState("Submit")
   const [buttonttext2,setbuttontext2] = useState("Submit")
@@ -36,7 +38,7 @@ const FirstRoute = () => (
 </Text>
 <Txinput></Txinput>
 <Text>{message1}</Text>
-<SubmitButton buttontext = {buttonttext1} setbuttontext = {setbuttontext1} setidx={setIndex} setmessage = {setmessage1} data = {index}></SubmitButton>
+<SubmitButton buttontext = {buttonttext1} setbuttontext = {setbuttontext1} setidx={setIndex} setmessage = {setmessage1} data = '0'></SubmitButton>
            
           
  </View>
@@ -52,7 +54,7 @@ const SecondRoute = () => (
 </Text>
 <Txinput></Txinput>
 <Text>{message2}</Text>
-<SubmitButton  buttontext = {buttonttext2} setbuttontext = {setbuttontext2} setidx={setIndex} setmessage = {setmessage2} data = {index}></SubmitButton>
+<SubmitButton  buttontext = {buttonttext2} setbuttontext = {setbuttontext2} setidx={setIndex} setmessage = {setmessage2} data = '1'></SubmitButton>
            
           
  </View>
@@ -64,7 +66,7 @@ const ThirdRoute = () => (
 </Text>
 <Txinput></Txinput>
 <Text>{message3}</Text>
-<SubmitButton  buttontext = {buttonttext3} setbuttontext = {setbuttontext3} setidx={setIndex} setmessage = {setmessage3} data = {index}></SubmitButton>
+<SubmitButton  buttontext = {buttonttext3} setbuttontext = {setbuttontext3} setidx={setIndex} setmessage = {setmessage3} data = '2'></SubmitButton>
            
           
  </View>
@@ -77,7 +79,7 @@ const ThirdRoute = () => (
 </Text>
 <Txinput></Txinput>
 <Text>{message4}</Text>
-<SubmitButton  propsdata = {props}  buttontext = {buttonttext4} setbuttontext = {setbuttontext4} setidx={setIndex} setmessage = {setmessage4} data = {index}></SubmitButton>
+<SubmitButton  buttontext = {buttonttext4} setbuttontext = {setbuttontext4} setidx={setIndex} setmessage = {setmessage4} data = '3'></SubmitButton>
            
           
  </View>
@@ -159,6 +161,7 @@ const ThirdRoute = () => (
     <TabView 
 
       navigationState={{ index, routes }}
+      
       
       renderScene={renderScene}
       onIndexChange={setIndex}

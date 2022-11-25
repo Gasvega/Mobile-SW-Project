@@ -33,6 +33,7 @@ export default function Quizopen(props) {
     return (
 
         <View style={styles.container}>
+           
          <Headerbar quiztext = {props.route.params.text}></Headerbar>
          <Text  style = {styles.textstyle}> What do you think the problem is asking you to do?
         </Text>
@@ -43,6 +44,7 @@ export default function Quizopen(props) {
         >
             <Text style = {styles.textstyle}>{nextok}</Text>
         </TouchableOpacity>
+        
         </View>
        
      

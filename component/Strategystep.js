@@ -2,7 +2,6 @@
 
 import * as React from 'react';
 import { View, StyleSheet} from 'react-native';
-
 import TabviewControl from './Tabviewcontrol'
 import Headerbar from './Headerbar'
 export default function Strategystep(props) {

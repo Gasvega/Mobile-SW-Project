@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+
 import {StyleSheet,Text,TouchableOpacity} from 'react-native';
 
 
@@ -19,10 +19,9 @@ export default function Button(props) {
       else{
        
           props.setidx(1)
-          
+
       }
-    
-  
+
   }
   if(props.data == 1)
   {
@@ -49,29 +48,21 @@ if(props.data == 2)
   else {
       props.setidx(3)
   }
-
-
 }
 if(props.data == 3)
 {
   if(props.buttontext != "Next Step")
   {
     props.setmessage("🎉🎈 Congratulations")
-  props.setbuttontext("Next Strategy")
-  
+    props.setbuttontext("Next Strategy")
+    
   }
   else  {
-   
-      
+  
   }
-
-
+ }
 }
-
-
-  }
     return (
-    
         <TouchableOpacity style = {styles.buttonstyle } 
         onPress = {()=>
           textcheak()
