@@ -1,4 +1,3 @@
-// 주제
 import { DefaultTheme } from 'react-native-paper'
 
 export const theme = {
