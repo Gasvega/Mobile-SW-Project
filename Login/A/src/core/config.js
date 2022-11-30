@@ -1,4 +1,4 @@
-// 파이어베이스 SDK
+// 파이어베이스 
 export const firebaseConfig = {
   apiKey: "AIzaSyDD14VVuITdZiqZjML3zpojFHidMd4W05g",
   authDomain: "teamproject-6d5bd.firebaseapp.com",
