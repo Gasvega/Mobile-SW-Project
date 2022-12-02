@@ -1,135 +1,107 @@
 import React, { useState } from 'react';
 import { View, TextInput, Button,StyleSheet,Text } from 'react-native';
 import  {db}  from './firebaseConfig';
-import { 
-  addDoc, 
-  collection, 
-  getDocs,
-  doc,
-  updateDoc,
-  deleteDoc,  
-  where,
-  query } from "firebase/firestore"; 
+import { addDoc, collection, getDocs, doc, updateDoc, 
+  deleteDoc, where, query } from "firebase/firestore"; 
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import signUp from './Compenent/signUp';
+import signIn from './Compenent/singIn';
+import { StatusBar } from 'expo-status-bar';
+
+
 export default function App() {
   const [addName, setAddName] = useState('');
+  const [addPassword, setAddPassword] = useState('');
+  const [addPasswordCheck, setAddPasswordCheck] = useState('');
   const [addAge, setAddAge] = useState('');
-  const [id, setID] = useState('');
+  const [addId, setId] = useState('');
+  const [password, setPassword] = useState();
+  const [passwordCheck, setPasswordCheck] = useState();
   const [users, setUsers] = useState();
-  const deletefromDB = async ()=>{
-    try{
-      const docRef = doc(db, "user", id);
-      await deleteDoc(docRef);
-      alert("Deleted!!")
-      readfromDB()
-    }catch(error){
-      console.log(error.message)
-    }
-  }
+  const Stack = createStackNavigator();
 
-  const updateDB = async ()=>{
-    try{
-      const docRef = doc(db, "user", id);
-      await updateDoc(docRef, {
-        addName: addName,
-        addAge: addAge
-      });
-      alert("Updated!!")
-      readfromDB()
-    }catch(error){
-      console.log(error.message)
-    }
-  }
-
-  const queryDB = async ()=>{
-    try{
-      const q = await query(collection(db, "user" ), where('addName',"==","test23"))
-      const singleDoc = await getDocs(q);
-      console.log(singleDoc)
-    }catch(error){
-      console.log(error.message)
-    }
-  }
-
-  const readfromDB = async ()=>{
-    try{
-      const data = await getDocs(collection(db, "user" ))
-      setUsers(data.docs.map(doc => ({ ...doc.data(), id: doc.id })));
-    }catch(error){
-      console.log(error.message)
-    }
-  }
-
-  const addtoDB = async ()=>{
-    try{
-      await addDoc(collection(db, "user" ), {
-        addName: addName,
-        addAge: addAge,
-        createdAt: new Date(),
-      });
-      alert("Added!!")
-      setAddName("")
-      setAddAge("")
-    }catch(error){
-      console.log(error.message)
-    }
-  }
   return (
-    <View>
-      <TextInput
-        placeholder="name"
-        value={addName}
-        onChangeText={setAddName}
+    <NavigationContainer>
+      <StatusBar 
+        backgroundColor = 'white'
       />
-      <TextInput
-        placeholder="age"
-        value={addAge}
-        onChangeText={setAddAge}
-      />
-      <Button title="Add Text" onPress={addtoDB} />
-      <Button title="Read Text" onPress={readfromDB} />
-      {users?.map((row, idx) => {
-        return (
-          <>
-            <Text>User- {idx}</Text>
-            <Text>{row.id}</Text>
-            <Text>{row.addName}</Text>
-            <Text>{row.addAge}</Text>
-          </>
-        );
-      })}
-
-      <Button title="Update Text" onPress={updateDB} />
-      <TextInput
-        placeholder="Updata ID"
-        value={id}
-        onChangeText={setID}
-      />
-      <TextInput
-        placeholder="name"
-        value={addName}
-        onChangeText={setAddName}
-      />
-      <TextInput
-        placeholder="age"
-        value={addAge}
-        onChangeText={setAddAge}
-      />
-      <Button title="Delete Text" onPress={deletefromDB} />
-      <TextInput
-        placeholder="Delete ID"
-        value={id}
-        onChangeText={setID}
-      />
-      
-    </View>
+      <Stack.Navigator initialRouteName='Ragister'
+      screenOptions = {{
+        headerStyle:{
+          backgroundColor: '#2F9D27'
+        },
+        headerTintColor: 'white',
+        headerTitleStyle:{
+          fontwweight: 'bold',
+          color : 'white'
+        }
+      }}>
+        <Stack.Screen name = "Sign In" component={signIn}
+        options = {{title : 'Sing In'}}
+        />
+        <Stack.Screen name = "Sign Up" component={signUp}
+        options = {{title : 'Sing Up'}}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
+    
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+  SubView : {
+    flex : 1
   },
+  MainView: {
+    flex : 1,
+    backgroundColor: "white",
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  OutPut: {
+    flex : 2,
+    backgroundColor : "#D3FFFF",
+    marginBottom : 1,
+    marginTop : 50,
+    width: "70%",
+    marginLeft: 20,
+    borderColor: "#D1B2FF",
+    borderStyle: "solid",
+    borderWidth: 5,
+    borderRadius: 15,
+    alignItems: 'flex-start',
+    justifyContent: 'space-around',
+  },
+  StepSort:{
+  flex: 3,
+  marginTop : 5,
+  width: "90%",
+  alignItems: 'center',
+  },
+  Step: {
+    height : 48,
+    marginBottom : 1,
+    marginTop : 15,
+    width: "120%",
+    marginLeft: 60,
+    flexDirection: 'row',
+  },
+  Step2: {
+    marginBottom : 5,
+    marginTop : 5,
+    width: "20%",
+    marginLeft: 20,
+  },
+  TextStyle: {
+    marginLeft: 80,
+    width: "40%",
+    fontSize : 22,
+    backgroundColor : "white",
+    borderWidth: 2,
+    borderStyle: "solid",
+    borderRadius: 5,
+    borderColor: "black",
+    textcolor: "#BDBDBD",
+  }
 });
