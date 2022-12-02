@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {StyleSheet,TextInput} from 'react-native';
+import {StyleSheet,TextInput,View,TouchableWithoutFeedback,KeyboardAvoidingView} from 'react-native';
 import { useState } from 'react';
 export default function Txinput() {
     const [data, setdata] = useState("");
@@ -8,12 +8,18 @@ export default function Txinput() {
       }
        
     return (
+      
           <TextInput
           style={styles.textInput}
            value = {data}
            onChangeText={changedata}
+         
+           
+           //autoFocus={true}
            
          />
+          
+        
 
       );
 
@@ -22,15 +28,11 @@ export default function Txinput() {
 const styles = StyleSheet.create({
    
   textInput: {
-    margin: 15,
-
-    paddingHorizontal: 10,
-    height: 120,
+    margin: 10,
+    height: 80,
     width:300,
-   
     borderWidth: 3,
     borderRadius: 10,
-  
     justifyContent: 'center',
     alignItems: 'center',
     textAlign:'center'

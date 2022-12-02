@@ -1,6 +1,6 @@
 
 import * as React from 'react';
-import { View, StyleSheet,Text,TouchableOpacity} from 'react-native';
+import { View, StyleSheet,Text,TouchableOpacity,ScrollView} from 'react-native';
 import Headerbar from './Headerbar'
 import { useState, useEffect } from 'react';
 export default function Strategy(props) {
@@ -8,6 +8,22 @@ export default function Strategy(props) {
     const [strategytext1,setstrategytext1] = useState("")
     const [strategytext2,setstrategytext2] = useState("")
     const [strategytext3,setstrategytext3] = useState("")
+    if(props.route.params.num == 1)
+    {
+        useEffect(() => {
+            setstrategytext1("Write an equation to solve the problem")
+            setstrategytext2("Add on the shipping fee until I get to $85,75.")
+            setstrategytext3("Subtract away from $85,75 until I get to O.")
+    });
+    }
+    if(props.route.params.num == 2)
+    {
+        useEffect(() => {
+            setstrategytext1("Add up her miles and then find out how many more she needs to get to 22 miles")
+            setstrategytext2("Write an equation to solve it")
+            setstrategytext3("Subtract her miles from 22 and see how many are left")
+    });
+    }
 
     if(props.route.params.num == 3)
     {
@@ -32,6 +48,7 @@ export default function Strategy(props) {
          <Text style = {styles.textstyle}>❓ Which strategy do you want to try?
 
 </Text>
+<ScrollView>
 <TouchableOpacity style ={styles.buttonstyle}
 onPress = {() =>     props.navigation.navigate("strategystep",{paramtext:props.route.params.text,paramnum:props.route.params.num,step:'A'})}
 >
@@ -53,6 +70,7 @@ onPress = {() =>     props.navigation.navigate("strategystep",{paramtext:props.r
     <Text style = {styles.textstyle}>{strategytext3}
 </Text>
 </TouchableOpacity>
+</ScrollView>
 
         </View>
      
@@ -63,7 +81,7 @@ onPress = {() =>     props.navigation.navigate("strategystep",{paramtext:props.r
 
   const styles = StyleSheet.create({
     container: {
-    
+      flex:1,
       backgroundColor: '#fff',
       justifyContent: 'center',
       alignItems: 'center',

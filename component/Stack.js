@@ -1,17 +1,20 @@
 
 import {createStackNavigator} from '@react-navigation/stack'
+import {ScrollView,View,KeyboardAvoidingView} from 'react-native';
 import Quizselect from './Quizselect';
 import Quizopen from './Quizopen'
 import Strategy from './Strategy'
 import Strategystep from './Strategystep'
+
 
 const Stack = createStackNavigator();
 
 const StackNav= () => {
 
     return (
+      
         <Stack.Navigator screenOptions={{headerShown: false,headerTitleAlign:'center'}}>
-        
+       
 
       {/* <Stack.Screen
           name="drawernavi"
@@ -38,6 +41,7 @@ const StackNav= () => {
       }}/>
 
     </Stack.Navigator>
+  
     )
 }
 

@@ -1,6 +1,6 @@
 
 import * as React from 'react';
-import { View, StyleSheet,Text,TouchableOpacity} from 'react-native';
+import { View, StyleSheet,Text,TouchableOpacity,ScrollView,TouchableWithoutFeedback,Keyboard } from 'react-native';
 import { useState } from 'react';
 import Headerbar from './Headerbar'
 import Txinput from './Txinput'
@@ -31,22 +31,27 @@ export default function Quizopen(props) {
    
   
     return (
-
+<TouchableWithoutFeedback onPress={() => {
+       
+        Keyboard.dismiss()
+      }}>
         <View style={styles.container}>
-           
+         
          <Headerbar quiztext = {props.route.params.text}></Headerbar>
+         
          <Text  style = {styles.textstyle}> What do you think the problem is asking you to do?
         </Text>
+        < ScrollView>
         <Txinput></Txinput>
-        <Text>{message}</Text>
+        <Text style = {styles.textstyle}>{message}</Text>
         <TouchableOpacity style ={styles.buttonstyle}
         onPress={() => nextstage( props)}
         >
             <Text style = {styles.textstyle}>{nextok}</Text>
         </TouchableOpacity>
-        
+        </ScrollView>
         </View>
-       
+        </TouchableWithoutFeedback>
      
      
     );
@@ -55,7 +60,7 @@ export default function Quizopen(props) {
 
   const styles = StyleSheet.create({
     container: {
-      
+        flex:1,
       backgroundColor: '#fff',
       justifyContent: 'center',
       alignItems: 'center',
