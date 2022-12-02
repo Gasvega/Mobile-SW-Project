@@ -1,13 +1,15 @@
 
 import * as React from 'react';
-import { StyleSheet} from 'react-native';
+import { StyleSheet,} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native'
 import Drawer from "./component/Drawer"
-
+import { StatusBar } from 'expo-status-bar';
 export default function App() {
   return (
+    
     <NavigationContainer>
- 
+      
+      <StatusBar backgroundColor=''/>
       <Drawer></Drawer>
     </NavigationContainer>
    
